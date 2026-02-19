@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		B2FAA91D2F476BCF00F05A0D /* Prueba_Fianl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prueba_Fianl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2FAA91D2F476BCF00F05A0D /* Prueba_Fianl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Prueba_Fianl.app; path = "/Users/tardes/Desktop/GermanTarde/Xcode Swift/Swift/Ejemplo_1/Prueba_Fianl/build/Debug-iphoneos/Prueba_Fianl.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,6 +29,36 @@
 			path = Prueba_Fianl;
 			sourceTree = "<group>";
 		};
+		B2FAA93C2F476C1400F05A0D /* Data */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B2FAA93E2F476C1400F05A0D /* Utils */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B2FAA93F2F476C1400F05A0D /* ViewCells */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewCells;
+			sourceTree = "<group>";
+		};
+		B2FAA9412F476C1400F05A0D /* ViewControllers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B2FAA94B2F476C7900F05A0D /* View */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2FAA94F2F476C8500F05A0D /* Constans */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Constans;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +75,14 @@
 		B2FAA9142F476BCF00F05A0D = {
 			isa = PBXGroup;
 			children = (
+				B2FAA94F2F476C8500F05A0D /* Constans */,
+				B2FAA93C2F476C1400F05A0D /* Data */,
+				B2FAA93E2F476C1400F05A0D /* Utils */,
+				B2FAA93F2F476C1400F05A0D /* ViewCells */,
+				B2FAA9412F476C1400F05A0D /* ViewControllers */,
 				B2FAA91F2F476BCF00F05A0D /* Prueba_Fianl */,
-				B2FAA91E2F476BCF00F05A0D /* Products */,
+				B2FAA94B2F476C7900F05A0D /* View */,
 			);
-			sourceTree = "<group>";
-		};
-		B2FAA91E2F476BCF00F05A0D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B2FAA91D2F476BCF00F05A0D /* Prueba_Fianl.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -75,6 +102,12 @@
 			);
 			fileSystemSynchronizedGroups = (
 				B2FAA91F2F476BCF00F05A0D /* Prueba_Fianl */,
+				B2FAA93C2F476C1400F05A0D /* Data */,
+				B2FAA93E2F476C1400F05A0D /* Utils */,
+				B2FAA93F2F476C1400F05A0D /* ViewCells */,
+				B2FAA9412F476C1400F05A0D /* ViewControllers */,
+				B2FAA94B2F476C7900F05A0D /* View */,
+				B2FAA94F2F476C8500F05A0D /* Constans */,
 			);
 			name = Prueba_Fianl;
 			packageProductDependencies = (
@@ -108,7 +141,7 @@
 			mainGroup = B2FAA9142F476BCF00F05A0D;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = B2FAA91E2F476BCF00F05A0D /* Products */;
+			productRefGroup = B2FAA9142F476BCF00F05A0D;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
