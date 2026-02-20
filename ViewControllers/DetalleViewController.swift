@@ -9,7 +9,7 @@
 import UIKit
 
 class DetalleViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var lblTitulo: UILabel!
@@ -22,22 +22,26 @@ class DetalleViewController: UIViewController {
     @IBOutlet weak var lblRuntime: UILabel!
     @IBOutlet weak var lblPremios: UILabel!
     @IBOutlet weak var lblBoxOffice: UILabel!
+    @IBOutlet weak var DetalleCardView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    
+    @IBOutlet weak var FondoLabel: UILabel!
+    @IBOutlet weak var FondoLabel2: UILabel!
     // MARK: - Variable que recibe del ListaViewController
     var imdbID: String = ""
-
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         cargarDetalle()
+        mejorarDiseño()
     }
-
+    
     // MARK: - Llama a la API con el imdbID
     func cargarDetalle() {
         activityIndicator.startAnimating()
-
+        
         Task {
             let detalle = await MovieAPI.getMovieDetails(imdbID: imdbID)
             await MainActor.run {
@@ -48,21 +52,36 @@ class DetalleViewController: UIViewController {
             }
         }
     }
-
+    
     // MARK: - Rellena la pantalla con los datos
     func mostrarDatos(pelicula: Movie) {
         title                = pelicula.title
         lblTitulo.text       = pelicula.title
-        lblAnio.text         = "Año: \(pelicula.year)"
+        lblAnio.text         = pelicula.year
         lblGenero.text       = "Género: \(pelicula.genre ?? "N/A")"
         lblDirector.text     = "Director: \(pelicula.director ?? "N/A")"
         lblActores.text      = "Actores: \(pelicula.actors ?? "N/A")"
         lblTrama.text        = pelicula.plot ?? "Sin descripción"
-        lblCalificacion.text = "⭐ IMDB: \(pelicula.imdbRating ?? "N/A")"
+       // lblCalificacion.text = "⭐ IMDB: \(pelicula.imdbRating ?? "N/A")"
+        lblCalificacion.text = pelicula.imdbRating.map { "⭐️ \($0)" } ?? "N/A"
         lblRuntime.text      = "⏱ \(pelicula.runtime ?? "N/A")"
         lblPremios.text      = "🏆 \(pelicula.awards ?? "N/A")"
         lblBoxOffice.text    = "💰 \(pelicula.boxOffice ?? "N/A")"
         imgPoster.loadFrom(url: pelicula.poster)
+    }
+    
+    func mejorarDiseño(){
+        FondoLabel.layer.cornerRadius = 15
+        FondoLabel.layer.borderColor = UIColor.black.cgColor
+        FondoLabel2.layer.cornerRadius = 15
+        FondoLabel2.layer.borderColor = UIColor.black.cgColor
+        DetalleCardView.layer.cornerRadius = 15
+        DetalleCardView.layer.shadowColor = UIColor.black.cgColor
+        DetalleCardView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        DetalleCardView.layer.shadowRadius = 4
+        DetalleCardView.layer.shadowOpacity = 0.3
+        DetalleCardView.layer.borderColor = UIColor.black.cgColor
+        DetalleCardView.layer.masksToBounds = false
     }
 }
 
