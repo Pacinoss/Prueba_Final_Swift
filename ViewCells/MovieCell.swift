@@ -19,9 +19,6 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var CardView: UIView!
     @IBOutlet weak var Runtime: UILabel!
 
-    
-    
-    
     // MARK: - Rellena la celda con los datos de la pelicula
     func configurar(con pelicula: Movie) {
         Titulo.text = pelicula.title
@@ -32,7 +29,6 @@ class MovieCell: UITableViewCell {
         ImagePoster.image = UIImage(systemName: "film")
         ImagePoster.loadFrom(url: pelicula.poster)//carga la pelicula desde = UIImageView + ImageLoading
         configurelabes()
-
     }
     // MARK: - configuracionde cardView
     func configurelabes(){
@@ -49,6 +45,5 @@ class MovieCell: UITableViewCell {
         CardView.layer.borderWidth = 1
         CardView.layer.borderColor = UIColor.gray.cgColor
         Anio.adjustsFontSizeToFitWidth = true
-
     }
 }

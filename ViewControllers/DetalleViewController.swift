@@ -32,7 +32,6 @@ class DetalleViewController: UIViewController {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         cargarDetalle()
-        
     }
 
     // MARK: - Llama a la API con el imdbID
@@ -63,7 +62,6 @@ class DetalleViewController: UIViewController {
         lblRuntime.text      = "⏱ \(pelicula.runtime ?? "N/A")"
         lblPremios.text      = "🏆 \(pelicula.awards ?? "N/A")"
         lblBoxOffice.text    = "💰 \(pelicula.boxOffice ?? "N/A")"
-        
         imgPoster.loadFrom(url: pelicula.poster)
     }
 }
