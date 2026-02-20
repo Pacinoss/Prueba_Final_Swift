@@ -32,6 +32,7 @@ class DetalleViewController: UIViewController {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         cargarDetalle()
+        
     }
 
     // MARK: - Llama a la API con el imdbID

@@ -16,7 +16,9 @@ class ListaViewController: UIViewController, UISearchBarDelegate, UITableViewDat
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
-        self.mostrarAlerta(mensaje: "App preparada para buscar peliculas")
+        self.mostrarAlerta(mensaje: "Escribe tu pelicula en el buscador")
+        self.tableView.reloadData()
+        
     }
 
     // MARK: - Actions
@@ -26,11 +28,23 @@ class ListaViewController: UIViewController, UISearchBarDelegate, UITableViewDat
             return
         }
         Task {
+            // 1. Búsqueda inicial con &s=
             let resultados = await MovieAPI.buscarPeliculas(title: texto)
+            
+            // 2. Por cada película pedimos el detalle con &i= para obtener genre e imdbRating
+            var peliculasDetalladas: [Movie] = []
+            for pelicula in resultados {
+                if let detalle = await MovieAPI.getMovieDetails(imdbID: pelicula.imdbID) {
+                    peliculasDetalladas.append(detalle)
+                } else {
+                    peliculasDetalladas.append(pelicula) // si falla usamos la básica
+                }
+            }
+            
             await MainActor.run {
-                self.peliculas = resultados
+                self.peliculas = peliculasDetalladas
                 self.tableView.reloadData()
-                if resultados.isEmpty {
+                if peliculasDetalladas.isEmpty {
                     self.mostrarAlerta(mensaje: "No se encontraron resultados")
                 }
             }
@@ -38,7 +52,8 @@ class ListaViewController: UIViewController, UISearchBarDelegate, UITableViewDat
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        peliculas = []
+        tableView.reloadData()
     }
 
     // MARK: - TableView
